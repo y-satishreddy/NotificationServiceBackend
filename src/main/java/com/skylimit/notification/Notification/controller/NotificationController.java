@@ -18,14 +18,14 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class NotificationController {
 
+
     public NotificationService notificationService;
     private static final Logger log = LoggerFactory.getLogger(NotificationController.class);
 
     @PostMapping
     public ResponseEntity<NotificationResponse> handleNotification(@RequestBody NotificationRequest request){
-        log.info("POST /notifications API called");
         NotificationResponse response = notificationService.processNotification(request);
-        log.info("Notification processed successfully: {}",response.toString());
         return ResponseEntity.ok(response);
     }
+
 }
